@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "78c6330c-7e98-44f7-9eb9-450125f6af9b",
+		"name": "data-processing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "upload-data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Rahul/dow_jones_index_2.data"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8989/v0/data/processing",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v0",
+						"data",
+						"processing"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-record",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "2,RAH,1/7/2011,$13.85,$14.69,$13.80,$14.25,1453438639,2.88809,,,$14.17,$15.25,7.62174,54,0.0701754",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8989/v0/data?searchFile=dow_jones_index.data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v0",
+						"data"
+					],
+					"query": [
+						{
+							"key": "searchFile",
+							"value": "dow_jones_index.data"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search-record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8989/v0/record?searchValue=RAH&searchFile=dow_jones_index.data",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"v0",
+						"record"
+					],
+					"query": [
+						{
+							"key": "searchValue",
+							"value": "RAH"
+						},
+						{
+							"key": "searchFile",
+							"value": "dow_jones_index.data"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
