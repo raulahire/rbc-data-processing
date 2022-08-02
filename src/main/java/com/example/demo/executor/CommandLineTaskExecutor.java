@@ -1,6 +1,6 @@
 package com.example.demo.executor;
 
-import com.example.demo.integTest.FileUploadService;
+import com.example.demo.service.FileUploadService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;

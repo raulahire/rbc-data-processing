@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Stock;
 import com.example.demo.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,14 +28,14 @@ public class DataProcessingController {
     }
 
     @GetMapping(value = "/v0/record")
-    public ResponseEntity<List<String[]>> getRecord(@RequestParam("searchValue") String searchValue, @RequestParam("searchFile") String searchFile ){
-        return ResponseEntity.status(HttpStatus.OK).body(fileUploadService.readData(searchValue, searchFile));
+    public ResponseEntity<List<Stock>> getRecord(@RequestParam("searchValue") String searchValue){
+        return ResponseEntity.status(HttpStatus.OK).body(fileUploadService.readData(searchValue));
     }
 
     @PostMapping(value = "/v0/data")
-    public ResponseEntity<String> addRecord(@RequestBody String data, @RequestParam("searchFile") String searchFile){
+    public ResponseEntity<String> addRecord(@RequestBody String data){
         try{
-            fileUploadService.saveRecord(data, searchFile);
+            fileUploadService.saveRecord(data);
             return ResponseEntity.status(HttpStatus.OK).body("Record Added");
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

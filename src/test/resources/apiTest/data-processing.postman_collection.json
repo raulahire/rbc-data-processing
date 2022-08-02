@@ -82,7 +82,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8989/v0/data?searchFile=dow_jones_index.data",
+					"raw": "http://localhost:8989/v0/data",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -91,12 +91,6 @@
 					"path": [
 						"v0",
 						"data"
-					],
-					"query": [
-						{
-							"key": "searchFile",
-							"value": "dow_jones_index.data"
-						}
 					]
 				}
 			},
@@ -121,7 +115,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8989/v0/record?searchValue=RAH&searchFile=dow_jones_index.data",
+					"raw": "http://localhost:8989/v0/record?searchValue=RAH",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -135,10 +129,6 @@
 						{
 							"key": "searchValue",
 							"value": "RAH"
-						},
-						{
-							"key": "searchFile",
-							"value": "dow_jones_index.data"
 						}
 					]
 				}

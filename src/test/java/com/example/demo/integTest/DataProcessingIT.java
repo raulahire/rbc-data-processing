@@ -2,6 +2,7 @@ package com.example.demo.integTest;
 
 import com.example.demo.DataProcessingApplication;
 import com.example.demo.executor.CommandLineTaskExecutor;
+import com.example.demo.service.FileUploadService;
 import org.assertj.core.api.Assertions;
 import org.junit.Assert;
 import org.junit.Before;
