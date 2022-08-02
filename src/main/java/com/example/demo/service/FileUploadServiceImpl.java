@@ -70,13 +70,6 @@ public class FileUploadServiceImpl implements FileUploadService{
     @Override
     public List<Stock> readData(String searchValue){
         return stockRepository.findAllByStock(searchValue);
-        /*String data = new String(readDataFile(searchFile), StandardCharsets.UTF_8);
-        List<String> dataList = Arrays.asList(data.split("\\r\\n"));
-        List<String[]> filteredList = dataList.stream()
-                .map(s -> s.split(","))
-                .filter(stock -> stock[1].equalsIgnoreCase(searchValue))
-                .collect(Collectors.toList());
-        return filteredList;*/
     }
 
     public List<Stock> readDataForDB(String searchFile){
@@ -106,23 +99,7 @@ public class FileUploadServiceImpl implements FileUploadService{
 
     @Override
     public void saveRecord(String record){
-
         stockRepository.save(stockBuilder(record.split(",")));
-        /*try{
-            List<Path> filePathList = getFilePathList();
-            Path filePath = filePathList.stream().filter(file -> file.getFileName().toString().equals(searchFile))
-                    .findFirst().get();
-            Resource resource = load(filePath.getFileName().toString());
-            try {
-                StringBuilder data = new StringBuilder(new String(readDataFile(searchFile), StandardCharsets.UTF_8));
-                data.append(record);
-                Files.write(resource.getFile().toPath(), Collections.singleton(data.toString()), StandardCharsets.UTF_8);
-            } catch (IOException e) {
-                throw new RuntimeException("IOException", e);
-            }
-        } catch(IOException e){
-            throw new RuntimeException("Could not load the files!");
-        }*/
     }
 
     public byte[] readDataFile(String searchFile){
